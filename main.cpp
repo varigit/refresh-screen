@@ -36,40 +36,16 @@
  *
 */
 
-#include <qglobal.h>
-#if QT_VERSION < 0x050000
 #include <QtGui/QApplication>
-#else
-#include <QtWidgets/QApplication>
-#endif
-
 #include "mainwindow.h"
-#include <QStringList>
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     MainWindow w;
-	bool transparentBackground = true;
-
     w.setContextMenuPolicy(Qt::NoContextMenu);
     w.setWindowFlags(Qt::FramelessWindowHint);
-
-
-    QStringList args = app.arguments();
-
-    for ( int x = 0; x < args.count() ; x++) {
-        if(args[x].contains("background-black", Qt::CaseInsensitive)) {
-            transparentBackground = false;
-            break;
-       } 
-    }
-
-    if ( transparentBackground == true )
-        w.setAttribute(Qt::WA_TranslucentBackground ,true );
-    else
-        w.setStyleSheet("QMainWindow {background: 'black';}");
-
+    w.setAttribute(Qt::WA_TranslucentBackground ,true );
     w.showFullScreen();
     w.show();
 

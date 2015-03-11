@@ -8,11 +8,11 @@ all: release
 .PHONY: qmake
 qmake : refresh_screen.pro
 	@. ${ENV_SETUP}; \
-	qmake CONFIG+=release refresh_screen.pro
+	qmake2 CONFIG+=release refresh_screen.pro
 
 qmake_debug : refresh_screen.pro
 	@. ${ENV_SETUP}; \
-	qmake CONFIG+=debug refresh_screen.pro
+	qmake2 CONFIG+=debug refresh_screen.pro
 
 debug : qmake_debug
 	@. ${ENV_SETUP}; \
